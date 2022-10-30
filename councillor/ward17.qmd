@@ -1,0 +1,32 @@
+---
+title: "Ward 17: Don Valley North"
+---
+
+```{r}
+source("../setup.R")
+```
+
+Carroll did well throughout.
+
+```{r}
+ward17_mv <- margin_mapview(
+  councillor_polls[[17]], 
+  councillor_subdivisions[[17]],
+  "Carroll Shelley",
+  "Christoff Daryl",
+  rev(RColorBrewer::brewer.pal(5, "RdBu"))
+) +
+  popular_vote_mapview(
+    councillor_polls[[17]], 
+    councillor_subdivisions[[17]],
+    "Carroll Shelley",
+    RColorBrewer::brewer.pal(5, "Reds")
+  ) +
+  popular_vote_mapview(
+    councillor_polls[[17]], 
+    councillor_subdivisions[[17]],
+    "Christoff Daryl",
+    RColorBrewer::brewer.pal(5, "Blues")
+  )
+removeMapJunk(ward17_mv, c("homeButton", "easyButton"))
+```

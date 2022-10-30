@@ -1,0 +1,39 @@
+---
+title: "Ward 4: Parkdale-High Park"
+order: 4
+---
+
+```{r}
+source("../setup.R")
+```
+
+Lhamo did much better in Parkdale, Perks in the High Park part of the riding. Agrell did well in the High Park part of the riding, but not well enough to earn her a place better than third.
+
+```{r}
+ward4_mv <- margin_mapview(
+  councillor_polls[[4]], 
+  councillor_subdivisions[[4]],
+  "Perks Gord",
+  "Lhamo Chemi",
+  RColorBrewer::brewer.pal(5, "PRGn")
+) +
+  popular_vote_mapview(
+  councillor_polls[[4]], 
+  councillor_subdivisions[[4]],
+    "Perks Gord",
+    RColorBrewer::brewer.pal(5, "Greens")
+  ) +
+  popular_vote_mapview(
+    councillor_polls[[4]], 
+    councillor_subdivisions[[4]],
+    "Lhamo Chemi",
+    RColorBrewer::brewer.pal(5, "Purples")
+  ) +
+  popular_vote_mapview(
+    councillor_polls[[4]], 
+    councillor_subdivisions[[4]],
+    "Agrell Siri",
+    RColorBrewer::brewer.pal(5, "Blues")
+  )
+removeMapJunk(ward4_mv, c("homeButton", "easyButton"))
+```

@@ -1,0 +1,39 @@
+---
+title: "Ward 1: Etobicoke North"
+order: 1
+---
+
+```{r}
+source("../setup.R")
+```
+
+Not a big contest here. Generally Cristanti wins all over.
+
+```{r}
+ward1_mv <- margin_mapview(
+  councillor_polls[[1]], 
+  councillor_subdivisions[[1]], 
+  "Crisanti Vincent",
+  "Minhas Avtar",
+  rev(RColorBrewer::brewer.pal(5, "RdBu"))
+) +
+  popular_vote_mapview(
+    councillor_polls[[1]], 
+    councillor_subdivisions[[1]], 
+    "Crisanti Vincent",
+    RColorBrewer::brewer.pal(5, "Blues")
+  ) + 
+  popular_vote_mapview(
+    councillor_polls[[1]], 
+    councillor_subdivisions[[1]], 
+    "Minhas Avtar",
+    RColorBrewer::brewer.pal(5, "Reds")
+  ) + 
+  popular_vote_mapview(
+    councillor_polls[[1]], 
+    councillor_subdivisions[[1]], 
+    "Ozzoude Charles",
+    RColorBrewer::brewer.pal(5, "Purples")
+  )
+removeMapJunk(ward1_mv, c("homeButton", "easyButton"))
+```

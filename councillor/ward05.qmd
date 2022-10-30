@@ -1,0 +1,33 @@
+---
+title: "Ward 5: York South-Weston"
+order: 5
+---
+
+```{r}
+source("../setup.R")
+```
+
+Generally a divide along the Kitchener GO train corridor, with Padovani doing better to the southwest and Nunziata doing better to the northeast.
+
+```{r}
+ward5_mv <- margin_mapview(
+  councillor_polls[[5]], 
+  councillor_subdivisions[[5]],
+  "Nunziata Frances",
+  "Padovani Chiara",
+  RColorBrewer::brewer.pal(5, "PRGn")
+) +
+  popular_vote_mapview(
+    councillor_polls[[5]], 
+    councillor_subdivisions[[5]],
+    "Nunziata Frances",
+    RColorBrewer::brewer.pal(5, "Greens")
+  ) +
+  popular_vote_mapview(
+    councillor_polls[[5]], 
+    councillor_subdivisions[[5]],
+    "Padovani Chiara",
+    RColorBrewer::brewer.pal(5, "Purples")
+  )
+removeMapJunk(ward5_mv, c("homeButton", "easyButton"))
+```

@@ -1,0 +1,32 @@
+---
+title: "Ward 13: Toronto Centre"
+---
+
+```{r}
+source("../setup.R")
+```
+
+Moise did well in this ward throughout.
+
+```{r}
+ward13_mv <- margin_mapview(
+  councillor_polls[[13]], 
+  councillor_subdivisions[[13]],
+  "Moise Chris",
+  "Ward Nicki",
+  rev(RColorBrewer::brewer.pal(5, "PRGn"))
+) +
+  popular_vote_mapview(
+    councillor_polls[[13]], 
+    councillor_subdivisions[[13]],
+    "Moise Chris",
+    RColorBrewer::brewer.pal(5, "Purples")
+  ) +
+  popular_vote_mapview(
+    councillor_polls[[13]], 
+    councillor_subdivisions[[13]],
+    "Ward Nicki",
+    RColorBrewer::brewer.pal(5, "Greens")
+  )
+removeMapJunk(ward13_mv, c("homeButton", "easyButton"))
+```

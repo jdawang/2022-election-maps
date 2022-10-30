@@ -1,0 +1,26 @@
+---
+title: "Ward 14: Toronto-Danforth"
+---
+
+```{r}
+source("../setup.R")
+```
+
+Fletcher did well in this ward throughout.
+
+```{r}
+ward14_mv <- margin_mapview(
+  councillor_polls[[14]], 
+  councillor_subdivisions[[14]],
+  "Fletcher Paula",
+  "Abro Wali",
+  rev(RColorBrewer::brewer.pal(5, "RdBu"))
+) +
+  popular_vote_mapview(
+    councillor_polls[[14]], 
+    councillor_subdivisions[[14]],
+    "Fletcher Paula",
+    RColorBrewer::brewer.pal(5, "Reds")
+  )
+removeMapJunk(ward14_mv, c("homeButton", "easyButton"))
+```

@@ -1,0 +1,25 @@
+project:
+  type: website
+  output-dir: docs
+
+website:
+  title: "2022 Municipal Election Interactive Maps"
+  sidebar:
+    style: "docked"
+    contents:
+      - text: "Home"
+        file: index.qmd
+      - main_site.qmd
+      - section: "Councillor"
+        contents: "councillor/*.qmd"
+  page-navigation: true
+
+format:
+  html:
+    theme: cosmo
+    css: styles.css
+    code-fold: false
+    echo: false
+    warning: false
+
+editor: visual

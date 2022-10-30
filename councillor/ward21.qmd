@@ -1,0 +1,32 @@
+---
+title: "Ward 21: Scarborough Centre"
+---
+
+```{r}
+source("../setup.R")
+```
+
+Thompson did well throughout.
+
+```{r}
+ward21_mv <- margin_mapview(
+  councillor_polls[[21]], 
+  councillor_subdivisions[[21]],
+  "Thompson Michael",
+  "Ayub Muhammad",
+  RColorBrewer::brewer.pal(5, "RdBu")
+) +
+  popular_vote_mapview(
+    councillor_polls[[21]], 
+    councillor_subdivisions[[21]],
+    "Thompson Michael",
+    RColorBrewer::brewer.pal(5, "Blues")
+  ) +
+  popular_vote_mapview(
+    councillor_polls[[21]], 
+    councillor_subdivisions[[21]],
+    "Ayub Muhammad",
+    RColorBrewer::brewer.pal(5, "Reds")
+  )
+removeMapJunk(ward21_mv, c("homeButton", "easyButton"))
+```

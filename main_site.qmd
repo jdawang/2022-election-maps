@@ -1,0 +1,9 @@
+---
+title: "Main site"
+---
+
+```{=html}
+<script type="text/javascript">
+window.location.replace("https://jdawang.github.io");
+</script>
+```

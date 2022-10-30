@@ -1,0 +1,38 @@
+---
+title: "Ward 11: University-Rosedale"
+---
+
+```{r}
+source("../setup.R")
+```
+
+Saxe did best in the northeast: East Annex to Rosedale. Di Pasquale did best in the southwest.
+
+```{r}
+ward11_mv <- margin_mapview(
+  councillor_polls[[11]], 
+  councillor_subdivisions[[11]],
+  "Saxe Dianne",
+  "Di Pasquale Norm",
+  RColorBrewer::brewer.pal(5, "PRGn")
+) +
+  popular_vote_mapview(
+    councillor_polls[[11]], 
+    councillor_subdivisions[[11]],
+    "Saxe Dianne",
+    RColorBrewer::brewer.pal(5, "Greens")
+  ) +
+  popular_vote_mapview(
+    councillor_polls[[11]], 
+    councillor_subdivisions[[11]],
+    "Di Pasquale Norm",
+    RColorBrewer::brewer.pal(5, "Purples")
+  ) +
+  popular_vote_mapview(
+    councillor_polls[[11]], 
+    councillor_subdivisions[[11]],
+    "Buxton Potts Robin",
+    RColorBrewer::brewer.pal(5, "Reds")
+  )
+removeMapJunk(ward11_mv, c("homeButton", "easyButton"))
+```

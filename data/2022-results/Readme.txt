@@ -1,0 +1,1 @@
+Note there are no results for the French language school boards. Candidates were either acclaimed or the election was voided.

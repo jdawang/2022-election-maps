@@ -1,0 +1,109 @@
+---
+title: "Ward 23: Scarborough North"
+---
+
+```{r}
+source("../setup.R")
+```
+
+Ward 23 is a special case, as the incumbent councillor, Cynthia Lai, [died](https://www.cbc.ca/news/canada/toronto/scarborough-councillor-cynthia-lai-dies-1.6625758) a few days before the election. Her name remained on the ballot as they were already printed, but any votes for her were not counted. The first map is taking the official results, with any votes for Lai not counted. The second map uses a proxy for votes for Lai: total mayoral votes minus total votes for councillor.
+
+In the official results map, Myers does well throughout the ward with a main gap surrounding Midland in the north.
+
+```{r}
+ward23_mv <- margin_mapview(
+  councillor_polls[[23]], 
+  councillor_subdivisions[[23]],
+  "Myers Jamaal",
+  "Francis Phillip",
+  rev(RColorBrewer::brewer.pal(5, "PRGn"))
+) +
+  popular_vote_mapview(
+    councillor_polls[[23]], 
+    councillor_subdivisions[[23]],
+    "Myers Jamaal",
+    RColorBrewer::brewer.pal(5, "Purples")
+  ) +
+  popular_vote_mapview(
+    councillor_polls[[23]], 
+    councillor_subdivisions[[23]],
+    "Francis Phillip",
+    RColorBrewer::brewer.pal(5, "Greens")
+  ) +
+  popular_vote_mapview(
+    councillor_polls[[23]], 
+    councillor_subdivisions[[23]],
+    "Jones Virginia",
+    RColorBrewer::brewer.pal(5, "Reds")
+  )
+removeMapJunk(ward23_mv, c("homeButton", "easyButton"))
+```
+
+Generally it seems like people knew that their vote for Lai would not be counted, though there are some pockets here and there where she got a quarter or more of the vote.
+
+```{r}
+total_votes_per_poll <- function(.data) {
+  .data %>% 
+    st_drop_geometry() %>%
+    group_by(poll) %>%
+    summarise(total_votes=sum(votes, na.rm=TRUE), .groups="drop")
+}
+
+lai_proxy <- function(councillor_data, mayor_data) {
+  councillor_data %>%
+    total_votes_per_poll() %>%
+    left_join(
+      mayor_data %>%
+        total_votes_per_poll() %>%
+        rename(mayor_votes=total_votes) %>%
+        select(poll, mayor_votes),
+      by="poll"
+    ) %>%
+    mutate(
+      candidate="Lai Cynthia", 
+      votes=mayor_votes - total_votes,
+      ward=23
+    ) %>%
+    select(candidate, poll, votes, total=mayor_votes, ward, contains("point_name")) %>%
+    left_join(
+      councillor_data %>%
+        select(poll) %>%
+        group_by(poll) %>%
+        slice_head(n=1),
+      by="poll"
+    ) %>%
+    st_as_sf() %>%
+    bind_rows(councillor_data) %>%
+    group_by(poll) %>%
+    mutate(
+      total=max(coalesce(total, 0)), 
+      voter_count=max(coalesce(voter_count, 0))
+    ) %>%
+    ungroup() %>%
+    mutate(pct=ifelse(total != 0, votes / total, 0))
+}
+
+ward23_polls_lai_proxy <- lai_proxy(councillor_polls[[23]], mayor_polls[[23]])
+ward23_subdivisions_lai_proxy <- lai_proxy(councillor_subdivisions[[23]], mayor_subdivisions[[23]])
+
+ward23_lai_proxy_mv <- margin_mapview(
+  ward23_polls_lai_proxy, 
+  ward23_subdivisions_lai_proxy,
+  "Myers Jamaal",
+  "Lai Cynthia",
+  rev(RColorBrewer::brewer.pal(5, "PRGn"))
+) +
+  popular_vote_mapview(
+    ward23_polls_lai_proxy, 
+    ward23_subdivisions_lai_proxy,
+    "Myers Jamaal",
+    RColorBrewer::brewer.pal(5, "Purples")
+  ) +
+  popular_vote_mapview(
+    ward23_polls_lai_proxy, 
+    ward23_subdivisions_lai_proxy,
+    "Lai Cynthia",
+    RColorBrewer::brewer.pal(5, "Greens")
+  )
+removeMapJunk(ward23_lai_proxy_mv@map, c("homeButton", "easyButton"))
+```

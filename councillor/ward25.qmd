@@ -1,0 +1,32 @@
+---
+title: "Ward 25: Scarborough-Rouge Park"
+---
+
+```{r}
+source("../setup.R")
+```
+
+McKelvie did well throughout, but there are a few pockets where she tied or actually did a bit worse than Kanakaratnam.
+
+```{r}
+ward25_mv <- margin_mapview(
+  councillor_polls[[25]], 
+  councillor_subdivisions[[25]],
+  "McKelvie Jennifer",
+  "Kanakaratnam Jacinta",
+  rev(RColorBrewer::brewer.pal(5, "RdBu"))
+) +
+  popular_vote_mapview(
+    councillor_polls[[25]], 
+    councillor_subdivisions[[25]],
+    "McKelvie Jennifer",
+    RColorBrewer::brewer.pal(5, "Reds")
+  ) +
+  popular_vote_mapview(
+    councillor_polls[[25]], 
+    councillor_subdivisions[[25]],
+    "Kanakaratnam Jacinta",
+    RColorBrewer::brewer.pal(5, "Blues")
+  )
+removeMapJunk(ward25_mv, c("homeButton", "easyButton"))
+```

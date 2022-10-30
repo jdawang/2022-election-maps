@@ -1,0 +1,38 @@
+---
+title: "Ward 18: Willowdale"
+---
+
+```{r}
+source("../setup.R")
+```
+
+Cheng performed best east of Yonge and generally tied or had a slimmer margin to the west. O'Brien Fehr won a few pockets to the southwest and a few buildings here or there, but did not win many polls even on the west side of Yonge. Lee performed best in the north of the ward.
+
+```{r}
+ward18_mv <- margin_mapview(
+  councillor_polls[[18]], 
+  councillor_subdivisions[[18]],
+  "Cheng Lily",
+  "O'Brien Fehr Markus",
+  RColorBrewer::brewer.pal(5, "RdBu")
+) +
+  popular_vote_mapview(
+    councillor_polls[[18]], 
+    councillor_subdivisions[[18]],
+    "Cheng Lily",
+    RColorBrewer::brewer.pal(5, "Blues")
+  ) +
+  popular_vote_mapview(
+    councillor_polls[[18]], 
+    councillor_subdivisions[[18]],
+    "O'Brien Fehr Markus",
+    RColorBrewer::brewer.pal(5, "Reds")
+  ) +
+  popular_vote_mapview(
+    councillor_polls[[18]], 
+    councillor_subdivisions[[18]],
+    "Lee Daniel",
+    RColorBrewer::brewer.pal(5, "Greens")
+  )
+removeMapJunk(ward18_mv, c("homeButton", "easyButton"))
+```

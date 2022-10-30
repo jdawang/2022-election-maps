@@ -1,0 +1,38 @@
+---
+title: "Ward 10: Spadina-Fort York"
+---
+
+```{r}
+source("../setup.R")
+```
+
+Malik did best in a "ring" pattern, with the central part of the riding being more mixed and where Engelberg was strongest.
+
+```{r}
+ward10_mv <- margin_mapview(
+  councillor_polls[[10]], 
+  councillor_subdivisions[[10]],
+  "Malik Ausma",
+  "Engelberg April",
+  rev(RColorBrewer::brewer.pal(5, "PRGn"))
+) +
+  popular_vote_mapview(
+    councillor_polls[[10]], 
+    councillor_subdivisions[[10]],
+    "Malik Ausma",
+    RColorBrewer::brewer.pal(5, "Purples")
+  ) +
+  popular_vote_mapview(
+    councillor_polls[[10]], 
+    councillor_subdivisions[[10]],
+    "Engelberg April",
+    RColorBrewer::brewer.pal(5, "Greens")
+  ) +
+  popular_vote_mapview(
+    councillor_polls[[10]], 
+    councillor_subdivisions[[10]],
+    "Samardzic Igor",
+    RColorBrewer::brewer.pal(5, "Oranges")
+  )
+removeMapJunk(ward10_mv, c("homeButton", "easyButton"))
+```

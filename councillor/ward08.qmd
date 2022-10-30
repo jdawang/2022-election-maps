@@ -1,0 +1,33 @@
+---
+title: "Ward 8: Eglinton-Lawrence"
+order: 8
+---
+
+```{r}
+source("../setup.R")
+```
+
+Colle did well throughout. Sambasivam's best area was just west of Yonge
+
+```{r}
+ward8_mv <- margin_mapview(
+  councillor_polls[[8]], 
+  councillor_subdivisions[[8]],
+  "Colle Mike",
+  "Sambasivam Evan",
+  RColorBrewer::brewer.pal(5, "PRGn")
+) +
+  popular_vote_mapview(
+    councillor_polls[[8]], 
+    councillor_subdivisions[[8]],
+    "Colle Mike",
+    RColorBrewer::brewer.pal(5, "Greens")
+  ) +
+  popular_vote_mapview(
+    councillor_polls[[8]], 
+    councillor_subdivisions[[8]],
+    "Sambasivam Evan",
+    RColorBrewer::brewer.pal(5, "Purples")
+  )
+removeMapJunk(ward8_mv, c("homeButton", "easyButton"))
+```

@@ -1,0 +1,17 @@
+---
+title: "2022 Municipal Election Interactive Maps"
+---
+
+I decided to spend some time mapping out the poll-by-poll results for each of the council races. A lot of the races were not close so the maps just show a blowout.
+
+Notes:
+
+\- I decided to arbitrarily include some candidates for some wards, based on endorsement by [More Neighbours Toronto](https://www.moreneighbours.ca) or just because I wanted to.
+
+\- The default map is the winner's margin over the second place candidate overall, not in each poll.
+
+\- Legends are a bit of a mess, but you can clean them up by toggling on and off the different layers.
+
+\- You can toggle popular vote layers for certain candidates.
+
+\- For the poll (point) results, the size of the marker is the total number of votes cast, the shade is the percent point margin or percent popular vote.

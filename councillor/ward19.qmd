@@ -1,0 +1,32 @@
+---
+title: "Ward 19: Beaches-East York"
+---
+
+```{r}
+source("../setup.R")
+```
+
+Bradford did well throughout.
+
+```{r}
+ward19_mv <- margin_mapview(
+  councillor_polls[[19]], 
+  councillor_subdivisions[[19]],
+  "Bradford Brad",
+  "Worden Jennie",
+  RColorBrewer::brewer.pal(5, "RdBu")
+) +
+  popular_vote_mapview(
+    councillor_polls[[19]], 
+    councillor_subdivisions[[19]],
+    "Bradford Brad",
+    RColorBrewer::brewer.pal(5, "Blues")
+  ) +
+  popular_vote_mapview(
+    councillor_polls[[19]], 
+    councillor_subdivisions[[19]],
+    "Worden Jennie",
+    RColorBrewer::brewer.pal(5, "Reds")
+  )
+removeMapJunk(ward19_mv, c("homeButton", "easyButton"))
+```

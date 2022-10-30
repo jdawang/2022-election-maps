@@ -1,0 +1,32 @@
+---
+title: "Ward 12: Toronto-St. Paul's"
+---
+
+```{r}
+source("../setup.R")
+```
+
+Matlow dominated this ward.
+
+```{r}
+ward12_mv <- margin_mapview(
+  councillor_polls[[12]], 
+  councillor_subdivisions[[12]],
+  "Matlow Josh",
+  "Ashworth Bryan",
+  rev(RColorBrewer::brewer.pal(5, "RdBu"))
+) +
+  popular_vote_mapview(
+    councillor_polls[[12]], 
+    councillor_subdivisions[[12]],
+    "Matlow Josh",
+    RColorBrewer::brewer.pal(5, "Reds")
+  ) +
+  popular_vote_mapview(
+    councillor_polls[[12]], 
+    councillor_subdivisions[[12]],
+    "Ashworth Bryan",
+    RColorBrewer::brewer.pal(5, "Blues")
+  )
+removeMapJunk(ward12_mv, c("homeButton", "easyButton"))
+```

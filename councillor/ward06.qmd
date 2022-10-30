@@ -1,0 +1,33 @@
+---
+title: "Ward 6: York Centre"
+order: 6
+---
+
+```{r}
+source("../setup.R")
+```
+
+Pasternak pretty much wins big throughout.
+
+```{r}
+ward6_mv <- margin_mapview(
+  councillor_polls[[6]], 
+  councillor_subdivisions[[6]],
+  "Pasternak James",
+  "Arkin Mike",
+  RColorBrewer::brewer.pal(5, "PRGn")
+) +
+  popular_vote_mapview(
+    councillor_polls[[6]], 
+    councillor_subdivisions[[6]],
+    "Pasternak James",
+    RColorBrewer::brewer.pal(5, "Greens")
+  ) +
+  popular_vote_mapview(
+    councillor_polls[[6]], 
+    councillor_subdivisions[[6]],
+    "Arkin Mike",
+    RColorBrewer::brewer.pal(5, "Purples")
+  )
+removeMapJunk(ward6_mv, c("homeButton", "easyButton"))
+```

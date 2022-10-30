@@ -1,0 +1,32 @@
+---
+title: "Ward 22: Scarborough-Agincourt"
+---
+
+```{r}
+source("../setup.R")
+```
+
+Nick Mantas did well throughout.
+
+```{r}
+ward22_mv <- margin_mapview(
+  councillor_polls[[22]], 
+  councillor_subdivisions[[22]],
+  "Mantas Nick",
+  "Wu Bill",
+  RColorBrewer::brewer.pal(5, "RdBu")
+) +
+  popular_vote_mapview(
+    councillor_polls[[22]], 
+    councillor_subdivisions[[22]],
+    "Mantas Nick",
+    RColorBrewer::brewer.pal(5, "Blues")
+  ) +
+  popular_vote_mapview(
+    councillor_polls[[22]], 
+    councillor_subdivisions[[22]],
+    "Wu Bill",
+    RColorBrewer::brewer.pal(5, "Reds")
+  )
+removeMapJunk(ward22_mv, c("homeButton", "easyButton"))
+```

@@ -1,0 +1,38 @@
+---
+title: "Ward 15: Don Valley West"
+---
+
+```{r}
+source("../setup.R")
+```
+
+Robinson did well throughout.
+
+```{r}
+ward15_mv <- margin_mapview(
+  councillor_polls[[15]], 
+  councillor_subdivisions[[15]],
+  "Robinson Jaye",
+  "Sharp Sheena",
+  rev(RColorBrewer::brewer.pal(5, "PRGn"))
+) +
+  popular_vote_mapview(
+    councillor_polls[[15]], 
+    councillor_subdivisions[[15]],
+    "Robinson Jaye",
+    RColorBrewer::brewer.pal(5, "Purples")
+  ) +
+  popular_vote_mapview(
+    councillor_polls[[15]], 
+    councillor_subdivisions[[15]],
+    "Sharp Sheena",
+    RColorBrewer::brewer.pal(5, "Greens")
+  ) +
+  popular_vote_mapview(
+    councillor_polls[[15]], 
+    councillor_subdivisions[[15]],
+    "Ricci David",
+    RColorBrewer::brewer.pal(5, "Oranges")
+  )
+removeMapJunk(ward15_mv, c("homeButton", "easyButton"))
+```

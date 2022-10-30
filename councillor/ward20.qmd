@@ -1,0 +1,38 @@
+---
+title: "Ward 20: Scarborough-Southwest"
+---
+
+```{r}
+source("../setup.R")
+```
+
+There was a north-south divide, where Kandavel did better south of the Lakeshore East train tracks and even better south of Kingston Road and Crawford did better to the north. Rupasinghe had the best showing from around Kennedy to the west border of the ward.
+
+```{r}
+ward20_mv <- margin_mapview(
+  councillor_polls[[20]], 
+  councillor_subdivisions[[20]],
+  "Crawford Gary",
+  "Kandavel Parthi",
+  RColorBrewer::brewer.pal(5, "RdBu")
+) +
+  popular_vote_mapview(
+    councillor_polls[[20]], 
+    councillor_subdivisions[[20]],
+    "Crawford Gary",
+    RColorBrewer::brewer.pal(5, "Blues")
+  ) +
+  popular_vote_mapview(
+    councillor_polls[[20]], 
+    councillor_subdivisions[[20]],
+    "Kandavel Parthi",
+    RColorBrewer::brewer.pal(5, "Reds")
+  ) +
+  popular_vote_mapview(
+    councillor_polls[[20]], 
+    councillor_subdivisions[[20]],
+    "Rupasinghe Kevin",
+    RColorBrewer::brewer.pal(5, "Purples")
+  )
+removeMapJunk(ward20_mv, c("homeButton", "easyButton"))
+```

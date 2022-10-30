@@ -1,0 +1,39 @@
+---
+title: "Ward 2: Etobicoke Centre"
+order: 2
+---
+
+```{r}
+source("../setup.R")
+```
+
+Holyday wins all over.
+
+```{r}
+ward2_mv <- margin_mapview(
+  councillor_polls[[2]], 
+  councillor_subdivisions[[2]], 
+  "Holyday Stephen",
+  "Yanuziello Thomas",
+  rev(RColorBrewer::brewer.pal(5, "PRGn"))
+) +
+  popular_vote_mapview(
+    councillor_polls[[2]], 
+    councillor_subdivisions[[2]], 
+    "Holyday Stephen",
+    RColorBrewer::brewer.pal(5, "Greens")
+  ) + 
+  popular_vote_mapview(
+    councillor_polls[[2]], 
+    councillor_subdivisions[[2]], 
+    "Yanuziello Thomas",
+    RColorBrewer::brewer.pal(5, "Purples")
+  ) + 
+  popular_vote_mapview(
+    councillor_polls[[2]], 
+    councillor_subdivisions[[2]], 
+    "Habus Catherine",
+    RColorBrewer::brewer.pal(5, "Blues")
+  )
+removeMapJunk(ward2_mv, c("homeButton", "easyButton"))
+```

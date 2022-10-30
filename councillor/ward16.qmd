@@ -1,0 +1,38 @@
+---
+title: "Ward 16: Don Valley East"
+---
+
+```{r}
+source("../setup.R")
+```
+
+Burnside did well throughout the ward, with some pockets on the west side having a lower margin of victory.
+
+```{r}
+ward16_mv <- margin_mapview(
+  councillor_polls[[16]], 
+  councillor_subdivisions[[16]],
+  "Burnside Jon",
+  "Ksiazek Stephen",
+  RColorBrewer::brewer.pal(5, "RdBu")
+) +
+  popular_vote_mapview(
+    councillor_polls[[16]], 
+    councillor_subdivisions[[16]],
+    "Burnside Jon",
+    RColorBrewer::brewer.pal(5, "Blues")
+  ) +
+  popular_vote_mapview(
+    councillor_polls[[16]], 
+    councillor_subdivisions[[16]],
+    "Ksiazek Stephen",
+    RColorBrewer::brewer.pal(5, "Reds")
+  ) +
+  popular_vote_mapview(
+    councillor_polls[[16]], 
+    councillor_subdivisions[[16]],
+    "Mahovlich Colin",
+    RColorBrewer::brewer.pal(5, "Purples")
+  )
+removeMapJunk(ward16_mv, c("homeButton", "easyButton"))
+```

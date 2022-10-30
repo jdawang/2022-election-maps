@@ -1,0 +1,39 @@
+---
+title: "Ward 7: Humber River-Black Creek"
+order: 7
+---
+
+```{r}
+source("../setup.R")
+```
+
+Generally Perruzza did well throughout, with less of a margin immediately west of highway 400.
+
+```{r}
+ward7_mv <- margin_mapview(
+  councillor_polls[[7]], 
+  councillor_subdivisions[[7]],
+  "Perruzza Anthony",
+  "Mammoliti Christopher",
+  RColorBrewer::brewer.pal(5, "PRGn")
+) +
+  popular_vote_mapview(
+    councillor_polls[[7]], 
+    councillor_subdivisions[[7]],
+    "Perruzza Anthony",
+    RColorBrewer::brewer.pal(5, "Greens")
+  ) +
+  popular_vote_mapview(
+    councillor_polls[[7]], 
+    councillor_subdivisions[[7]],
+    "Mammoliti Christopher",
+    RColorBrewer::brewer.pal(5, "Purples")
+  ) +
+  popular_vote_mapview(
+    councillor_polls[[7]], 
+    councillor_subdivisions[[7]],
+    "Coombs Amanda",
+    RColorBrewer::brewer.pal(5, "Blues")
+  )
+removeMapJunk(ward7_mv, c("homeButton", "easyButton"))
+```

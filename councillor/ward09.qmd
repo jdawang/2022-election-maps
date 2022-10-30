@@ -1,0 +1,39 @@
+---
+title: "Ward 9: Davenport"
+order: 9
+---
+
+```{r}
+source("../setup.R")
+```
+
+Bravo did well throughout.
+
+```{r}
+ward9_mv <- margin_mapview(
+  councillor_polls[[9]], 
+  councillor_subdivisions[[9]],
+  "Bravo Alejandra",
+  "Gonzales Grant",
+  rev(RColorBrewer::brewer.pal(5, "PRGn"))
+) +
+  popular_vote_mapview(
+    councillor_polls[[9]], 
+    councillor_subdivisions[[9]],
+    "Bravo Alejandra",
+    RColorBrewer::brewer.pal(5, "Purples")
+  ) +
+  popular_vote_mapview(
+    councillor_polls[[9]], 
+    councillor_subdivisions[[9]],
+    "Gonzales Grant",
+    RColorBrewer::brewer.pal(5, "Greens")
+  ) +
+  popular_vote_mapview(
+    councillor_polls[[9]], 
+    councillor_subdivisions[[9]],
+    "Jamal Shaker",
+    RColorBrewer::brewer.pal(5, "Oranges")
+  )
+removeMapJunk(ward9_mv, c("homeButton", "easyButton"))
+```

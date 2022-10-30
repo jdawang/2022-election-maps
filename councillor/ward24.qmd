@@ -1,0 +1,32 @@
+---
+title: "Ward 24: Scarborough-Guildwood"
+---
+
+```{r}
+source("../setup.R")
+```
+
+Paul Ainslie did well throughout.
+
+```{r}
+ward24_mv <- margin_mapview(
+  councillor_polls[[24]], 
+  councillor_subdivisions[[24]],
+  "Ainslie Paul",
+  "Parker Vivian",
+  rev(RColorBrewer::brewer.pal(5, "RdBu"))
+) +
+  popular_vote_mapview(
+    councillor_polls[[24]], 
+    councillor_subdivisions[[24]],
+    "Ainslie Paul",
+    RColorBrewer::brewer.pal(5, "Reds")
+  ) +
+  popular_vote_mapview(
+    councillor_polls[[24]], 
+    councillor_subdivisions[[24]],
+    "Parker Vivian",
+    RColorBrewer::brewer.pal(5, "Blues")
+  )
+removeMapJunk(ward24_mv, c("homeButton", "easyButton"))
+```

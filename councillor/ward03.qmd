@@ -1,0 +1,33 @@
+---
+title: "Ward 3: Etobicoke-Lakeshore"
+order: 3
+---
+
+```{r}
+source("../setup.R")
+```
+
+Generally Morley won the South of the riding, with more mixed results in the North-East and North-West. The apartments in Humber Bay shores are more mixed, with some leaning even towards Grimes.
+
+```{r}
+ward3_mv <- margin_mapview(
+  councillor_polls[[3]], 
+  councillor_subdivisions[[3]], 
+  "Morley Amber",
+  "Grimes Mark",
+  rev(RColorBrewer::brewer.pal(5, "PRGn"))
+) +
+  popular_vote_mapview(
+    councillor_polls[[3]], 
+    councillor_subdivisions[[3]], 
+    "Morley Amber",
+    RColorBrewer::brewer.pal(5, "Purples")
+  ) + 
+  popular_vote_mapview(
+    councillor_polls[[3]], 
+    councillor_subdivisions[[3]], 
+    "Grimes Mark",
+    RColorBrewer::brewer.pal(5, "Greens")
+  )
+removeMapJunk(ward3_mv, c("homeButton", "easyButton"))
+```
